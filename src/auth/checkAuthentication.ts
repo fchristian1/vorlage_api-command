@@ -1,6 +1,11 @@
-export type IsAuthenticated = boolean;
+import { getOneBySessionToken } from "../db";
 
-export const checkAuthentication = (sessionToken: string): IsAuthenticated => {
-  if (sessionToken != "") return true;
-  return false;
+export type IsAuthenticated = boolean;
+const dbAuth = "auth";
+const colllectionSessioonToken = "sessionTokens";
+export const checkAuthentication = async (sessionToken: string): Promise<boolean> => {
+	const sessionTokenDB = await getOneBySessionToken(dbAuth, colllectionSessioonToken, sessionToken);
+	if (!sessionTokenDB) return false;
+	if (sessionTokenDB.sessionToken != sessionToken) return false;
+	return true;
 };

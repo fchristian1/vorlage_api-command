@@ -6,11 +6,12 @@ import log from "../helpers/log";
 
 const api: Express = express();
 
-export default () => {
-  apiConfig(api);
-  httpsServer(api)
-    .listen(PORT)
-    .on("listening", () => {
-      log("API", "Server is listening on https://localhost:" + PORT);
-    });
+export default async () => {
+	apiConfig(api);
+
+	httpsServer(api)
+		.listen(PORT)
+		.on("listening", () => {
+			log("API", "Server is listening on https://localhost:" + PORT);
+		});
 };

@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Response, Router } from "express";
 import commmandCall from "./commmandCall";
 
 const router = Router();

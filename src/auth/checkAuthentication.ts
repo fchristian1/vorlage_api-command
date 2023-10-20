@@ -1,9 +1,6 @@
-interface IsAuthenticated {
-  check: boolean;
-}
+export type IsAuthenticated = boolean;
 
 export const checkAuthentication = (sessionToken: string): IsAuthenticated => {
-  let auth: IsAuthenticated = { check: false };
-
-  return auth;
+  if (sessionToken != "") return true;
+  return false;
 };
